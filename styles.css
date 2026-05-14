@@ -399,6 +399,195 @@ body {
     color: #e6eef8
 }
 
+/* Features section (Built to Last) - refined to match Figma */
+.features-section {
+    background: #f7f7f8;
+    padding: 72px 0 96px;
+    color: #0b1220;
+}
+
+.features-section h2 {
+    font-size: 32px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.features-section .lead {
+    color: #6b7280;
+    margin-bottom: 28px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* FAQ styles */
+.faq-section {
+    padding: 64px 0 96px;
+    background: #f7f7f8;
+}
+
+.faq-title {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.faq-title .accent {
+    color: var(--accent);
+}
+
+.faq-list {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+.faq-item {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-q {
+    width: 100%;
+    text-align: left;
+    padding: 18px;
+    font-weight: 700;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-a {
+    padding: 0 18px 18px 18px;
+    color: var(--muted);
+    display: none;
+}
+
+.faq-item.open .faq-a {
+    display: block;
+}
+
+.chev {
+    color: #9aa1a8;
+    font-size: 12px;
+}
+
+.faq-cta .faq-box {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.faq-box-left h3 {
+    margin: 0 0 6px 0;
+}
+
+.faq-box-left p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.faq-box-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.email-input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e6e9ee;
+    min-width: 220px;
+}
+
+@media (max-width:768px) {
+    .faq-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .faq-box-right {
+        justify-content: flex-end;
+    }
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 18px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.04);
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card h4 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.card p {
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 4px;
+}
+
+.card .icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(36, 56, 181, 0.05);
+    color: var(--accent);
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.features-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px
+}
+
+.features-cta .primary-btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 12px;
+    border: 0;
+    box-shadow: 0 8px 18px rgba(36, 56, 181, 0.16);
+}
+
+@media (max-width:992px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .specs-hero {
     max-width: 1240px;
     margin: 0 auto;
