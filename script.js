@@ -67,14 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const next = document.getElementById('appsNext');
   if (!carousel) return;
 
-  const cardWidth = carousel.querySelector('.app-card')?.offsetWidth || 300;
+  const cards = Array.from(carousel.querySelectorAll('.app-card'));
+
+  function centerCard(card) {
+    const cardRect = card.getBoundingClientRect();
+    const containerRect = carousel.getBoundingClientRect();
+    const currentScroll = carousel.scrollLeft;
+    const offset = (cardRect.left - containerRect.left) + (cardRect.width / 2) - (containerRect.width / 2);
+    carousel.scrollTo({ left: currentScroll + offset, behavior: 'smooth' });
+  }
 
   prev && prev.addEventListener('click', () => {
-    carousel.scrollBy({ left: -cardWidth - 18, behavior: 'smooth' });
+    // find first fully visible card center and move to previous
+    const containerCenter = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+    let idx = cards.findIndex(c => {
+      const r = c.getBoundingClientRect();
+      return (r.left + r.width/2) >= containerCenter - 1;
+    });
+    if (idx <= 0) idx = 0; else idx = idx - 1;
+    centerCard(cards[idx]);
   });
 
   next && next.addEventListener('click', () => {
-    carousel.scrollBy({ left: cardWidth + 18, behavior: 'smooth' });
+    const containerCenter = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+    let idx = cards.findIndex(c => {
+      const r = c.getBoundingClientRect();
+      return (r.left + r.width/2) >= containerCenter - 1;
+    });
+    if (idx === -1) idx = 0;
+    if (idx >= cards.length - 1) idx = cards.length - 1; else idx = idx + 1;
+    centerCard(cards[idx]);
   });
 })();
 

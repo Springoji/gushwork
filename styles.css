@@ -773,11 +773,13 @@ body {
 .apps-carousel {
     display: flex;
     gap: 18px;
-    overflow: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    padding: 0 24px
+    padding: 40px 140px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .app-card {
@@ -787,7 +789,8 @@ body {
     border-radius: 18px;
     overflow: hidden;
     display: block;
-    position: relative
+    position: relative;
+    scroll-snap-align: center;
 }
 
 .app-card img {
