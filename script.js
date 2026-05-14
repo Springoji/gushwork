@@ -59,3 +59,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* Applications carousel controls */
+(() => {
+  const carousel = document.getElementById('appsCarousel');
+  const prev = document.getElementById('appsPrev');
+  const next = document.getElementById('appsNext');
+  if (!carousel) return;
+
+  const cardWidth = carousel.querySelector('.app-card')?.offsetWidth || 300;
+
+  prev && prev.addEventListener('click', () => {
+    carousel.scrollBy({ left: -cardWidth - 18, behavior: 'smooth' });
+  });
+
+  next && next.addEventListener('click', () => {
+    carousel.scrollBy({ left: cardWidth + 18, behavior: 'smooth' });
+  });
+})();
+
+/* Process tabs: swap title/text/image for each step */
+(() => {
+  const tabs = document.querySelectorAll('.tabs-list .tab');
+  const title = document.getElementById('processTitle');
+  const text = document.getElementById('processText');
+  const img = document.getElementById('processImage');
+
+  const map = {
+    raw: { t: 'High-Grade Raw Material Selection', d: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.', i: 'assets/ph.png' },
+    extrusion: { t: 'Extrusion', d: 'Melting and homogeneous mixing inside the extruder before passing through the die to form continuous pipe profile.', i: 'assets/ph.png' },
+    cooling: { t: 'Cooling', d: 'Controlled cooling bath solidifies the pipe maintaining dimensional accuracy and removing residual stresses.', i: 'assets/ph.png' },
+    sizing: { t: 'Sizing', d: 'Vacuum and pressure sizing stations fine-tune outer diameter and wall thickness to specification.', i: 'assets/ph.png' },
+    qc: { t: 'Quality Control', d: 'Inline testers measure roundness, wall thickness and perform visual inspections for defects.', i: 'assets/ph.png' },
+    marking: { t: 'Marking', d: 'Automated marking prints batch codes and specification data along the pipe length.', i: 'assets/ph.png' },
+    cutting: { t: 'Cutting', d: 'Precision cutting stations cut coils to required lengths and prepare ends for joining.', i: 'assets/ph.png' },
+    packaging: { t: 'Packaging', d: 'Coils and straight lengths are packaged and prepared for safe transport.', i: 'assets/ph.png' }
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const key = tab.getAttribute('data-step');
+      const entry = map[key];
+      if (entry) {
+        if (title) title.textContent = entry.t;
+        if (text) text.textContent = entry.d;
+        if (img) img.src = entry.i;
+      }
+    });
+  });
+})();
