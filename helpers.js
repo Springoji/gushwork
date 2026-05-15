@@ -130,6 +130,15 @@
               <div class="meta-text"><strong>Carlos Mendoza</strong><span>Operations Manager</span></div>
             </div>
           </div>
+          <div class="testimonial-card">
+            <div class="quote-mark">“</div>
+            <p class="quote">Excellent support for specialized applications.</p>
+            <p class="quote-body">The durability and performance of Meera's fishnet processing equipment has significantly improved our product quality.</p>
+            <div class="testimonial-meta">
+              <div class="avatar"><img src="assets/ph.png" alt="avatar"><span class="badge">G</span></div>
+              <div class="meta-text"><strong>Carlos Mendoza</strong><span>Operations Manager</span></div>
+            </div>
+          </div>
 
           <div class="testimonial-card">
             <div class="quote-mark">“</div>
