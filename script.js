@@ -58,6 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (chev) chev.textContent = '▼';
     });
   });
+  // mount CTA and footer from helpers (render-only)
+  if (window.Helpers) {
+    Helpers.mount('#cta-root', Helpers.renderCTA());
+    Helpers.mount('#footer-root', Helpers.renderFooter());
+    // mount newly extracted sections
+    Helpers.mount('#testimonials-root', Helpers.renderTestimonials());
+    Helpers.mount('#portfolio-root', Helpers.renderPortfolio());
+    Helpers.mount('#resources-root', Helpers.renderResources());
+  }
 });
 
 /* Applications carousel controls */
