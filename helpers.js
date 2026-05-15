@@ -40,17 +40,18 @@
   function renderFooter() {
     return `
     <footer class="footer">
-      <div class="footer-top">
-        <div class="footer-logo">
-          <h2>Mangalam</h2>
-          <span>HDPE PIPES</span>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <h2>Mangalam</h2>
+            <span>HDPE PIPES</span>
+          </div>
+          <div class="footer-heading">
+            Premium <span>HDPE Pipes & Fittings</span> Manufacturer in South India
+          </div>
         </div>
-        <div class="footer-heading">
-          Premium <span>HDPE Pipes & Fittings</span> Manufacturer in South India
-        </div>
-      </div>
 
-      <div class="footer-content">
+        <div class="footer-content">
         <div class="footer-column">
           <h4>About Us</h4>
           <a href="#">About Us</a>

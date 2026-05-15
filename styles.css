@@ -20,9 +20,87 @@ body {
 }
 
 .container {
-    width: 92%;
+    width: 1240px;
     max-width: 1240px;
-    margin: 0 auto
+    margin: 0 auto;
+}
+
+/* Page wrapper to enforce 131px hug height for main content areas */
+.page-wrapper {
+    width: 1240px;
+    height: 131px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width:1240px) {
+    .container {
+        width: 92%;
+        max-width: 100%;
+    }
+
+    .page-wrapper {
+        width: 100%;
+        height: auto;
+        padding: 12px 0;
+    }
+
+    .center {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .product-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 0;
+    }
+
+    .main-image img {
+        height: auto;
+        max-height: 420px;
+    }
+
+    .trusted-logos {
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navbar>nav {
+        position: static;
+        transform: none;
+        left: auto;
+        margin-top: 12px;
+    }
+
+    .trusted-logos {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .thumbnails {
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .apps-carousel {
+        padding: 20px 24px;
+    }
 }
 
 /* header */
@@ -397,6 +475,15 @@ body {
     padding: 72px 0 96px;
     background: #0b1720;
     color: #e6eef8
+}
+
+/* Centered block with fixed size for hug/hero and other content pages */
+.center {
+    width: 1240px;
+    height: 131px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 /* Features section (Built to Last) - refined to match Figma */
