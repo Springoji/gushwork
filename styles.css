@@ -76,6 +76,12 @@ body {
         padding: 0 12px;
     }
 
+    html,
+    body {
+        overflow-x: hidden;
+        /* prevent unwanted horizontal page scrolling */
+    }
+
     .navbar {
         flex-direction: column;
         align-items: stretch;
@@ -101,12 +107,276 @@ body {
     .apps-carousel {
         padding: 20px 24px;
     }
+
+    /* Mobile menu toggle and collapsed nav */
+    .menu-toggle {
+        display: inline-block;
+        background: transparent;
+        border: 0;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: 8px;
+    }
+
+    .nav-and-cta {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 8px;
+    }
+
+    .nav-and-cta.open {
+        display: flex;
+    }
+
+    .nav-links {
+        right: 20px;
+        /* align with container padding */
+        gap: 12px;
+        align-items: center;
+    }
+
+
+    /* ensure container gives room for the toggle on small screens */
+    .container.navbar {
+        padding-right: 72px;
+        /* reserve space so toggle doesn't overlap rounded corner */
+    }
+
+    /* make toggle visually distinct */
+    .menu-toggle {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        padding: 6px;
+        box-shadow: 0 2px 6px rgba(2, 6, 23, 0.06);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px 0;
+    }
+
+    /* Show toggle by default; hide only on large screens */
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    @media (min-width: 992px) {
+        .menu-toggle {
+            display: none;
+        }
+    }
+}
+
+/* Responsive header tweaks */
+@media (max-width: 992px) {
+
+    .main-header,
+    .sticky-header {
+        height: 60px;
+    }
+
+    .main-header .navbar,
+    .sticky-header .navbar {
+        padding: 8px 0;
+    }
+
+    /* Make nav position static and flow under logo */
+    .navbar>nav {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin-top: 8px;
+        text-align: left;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+        gap: 18px;
+    }
+
+    .contact-btn {
+        padding: 8px 16px;
+        border-radius: 14px;
+        font-size: 14px;
+        align-self: flex-end;
+        margin-top: 8px;
+    }
+
+    .logo {
+        font-size: 17px;
+        margin-left: 0;
+    }
+
+    /* hamburger toggle - anchor to inner container */
+    .container.navbar {
+        position: relative;
+        overflow: visible;
+    }
+
+    .menu-toggle {
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        border: 0;
+        position: absolute;
+        right: 12px;
+        /* move inward so it doesn't overlap rounded corner */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2000;
+    }
+
+    .menu-toggle::before {
+        content: '';
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: #111;
+        margin: 0 auto;
+        box-shadow: 0 6px 0 #111, 0 -6px 0 #111;
+    }
+
+    .nav-and-cta {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 8px;
+    }
+
+    .nav-and-cta.open {
+        display: flex;
+    }
+
+    /* hide inline nav and contact when using hamburger */
+    .navbar>nav,
+    .navbar>.contact-btn {
+        display: none;
+    }
+}
+
+/* show nav inline on larger screens */
+@media (min-width: 993px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-and-cta {
+        display: flex !important;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+    }
 }
 
 /* header */
 .main-header {
     background: #fff;
     border-bottom: 1px solid #eee
+}
+
+/* Ensure sticky and main header share the same inner container sizing
+   so the logo, nav and contact button remain aligned when header becomes fixed */
+.sticky-header .container,
+.main-header .container {
+    width: 1240px;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+/* Keep header height and vertical spacing consistent */
+.main-header,
+.sticky-header {
+    height: 64px;
+    /* slightly more compact to match Figma */
+    border-top: 4px solid transparent;
+    /* placeholder for subtle top line on desktop */
+}
+
+.main-header .navbar,
+.sticky-header .navbar {
+    padding: 10px 0;
+    /* tighter vertical spacing */
+    align-items: center;
+}
+
+/* thin subtle divider under header like Figma */
+.main-header {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+/* logo offset and sizing */
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 8px;
+    margin-right: auto;
+    /* push nav and contact button to the right */
+}
+
+/* image logo sizing */
+.logo img {
+    height: 42px;
+    display: block;
+    object-fit: contain;
+}
+
+/* When `.footer-logo` is used in the header, scale it down to fit */
+.main-header .footer-logo h2,
+.sticky-header .footer-logo h2 {
+    font-size: 18px;
+    /* smaller title */
+    margin: 0;
+    line-height: 1;
+}
+
+.main-header .footer-logo span,
+.sticky-header .footer-logo span {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    display: block;
+}
+
+/* keep nav centered on large screens but moved slightly to the right in figma */
+.navbar>nav {
+    position: static;
+    left: auto;
+    transform: none;
+}
+
+/* nav typography to match Figma */
+.nav-links a {
+    font-size: 15px;
+    color: #111;
+    font-weight: 500;
+}
+
+/* Contact button: pill shape, deeper blue, same size as Figma */
+.contact-btn {
+    padding: 10px 22px;
+    border-radius: 18px;
+    background: #2f3fb8;
+    /* deeper blue */
+    box-shadow: 0 6px 18px rgba(47, 63, 184, 0.18);
+}
+
+/* align nav and button to right on wide screens */
+@media (min-width: 992px) {
+    .navbar {
+        justify-content: flex-start;
+        gap: 24px;
+    }
+
+    .navbar>nav {
+        position: static;
+        left: auto;
+        right: auto;
+        transform: none;
+    }
 }
 
 .cta-panel .container {
@@ -117,7 +387,6 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 18px 0;
 }
 
@@ -143,13 +412,7 @@ body {
 
 /* header layout: place nav to the right of logo (next to contact button) */
 .navbar {
-    position: relative
-}
-
-.navbar>nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%)
+    position: relative;
 }
 
 .nav-links {
@@ -607,6 +870,18 @@ body {
 
     .faq-box-right {
         justify-content: flex-end;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .faq-box-right .email-input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .faq-box-right .primary-btn {
+        width: 140px;
+        flex: 0 0 auto;
     }
 }
 
@@ -1270,12 +1545,15 @@ body {
 }
 
 .resources-box {
-    max-width: 980px;
+    max-width: 1240px;
+    width: 100%;
     margin: 0 auto;
     background: #fff;
     border: 1px solid #e6e9ee;
     border-radius: 8px;
-    overflow: hidden
+    overflow: hidden;
+    padding-right: 18px;
+    /* keep space for download link */
 }
 
 .resource-row {
@@ -1423,13 +1701,30 @@ body {
         align-items: stretch
     }
 
+    .cta-inner {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
     .cta-copy {
         max-width: 100%;
-        margin-bottom: 18px
+        margin: 0 0 12px 0;
+        padding: 0;
     }
 
     .cta-form-box {
-        width: 100%
+        width: 100%;
+        margin: 0;
+        padding: 12px;
+    }
+
+    .cta-copy h2 {
+        font-size: 20px;
+    }
+
+    .cta-lead {
+        padding: 0;
+        font-size: 14px;
     }
 }
 
@@ -1826,5 +2121,19 @@ body {
             justify-content: center;
         }
 
+    }
+}
+
+/* On larger screens show nav inline and hide toggle */
+@media (min-width: 992px) {
+    .nav-and-cta {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .menu-toggle {
+        display: none !important;
     }
 }

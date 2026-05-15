@@ -77,6 +77,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!carousel) return;
 
   const cards = Array.from(carousel.querySelectorAll('.app-card'));
+        
+        // mobile menu toggle (works for both headers)
+        document.addEventListener('click', (e) => {
+          const btn = e.target.closest('.menu-toggle');
+          if (!btn) return;
+          const navbar = btn.closest('.navbar');
+          if (!navbar) return;
+          const group = navbar.querySelector('.nav-and-cta');
+          if (!group) return;
+          group.classList.toggle('open');
+        });
+
+        // close mobile menu when a nav link is clicked
+        document.addEventListener('click', (e)=>{
+          const link = e.target.closest('.nav-links a');
+          if(!link) return;
+          const group = link.closest('.nav-and-cta');
+          if(group) group.classList.remove('open');
+        });
 
   function centerCard(card) {
     const cardRect = card.getBoundingClientRect();
